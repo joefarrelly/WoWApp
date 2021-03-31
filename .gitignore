@@ -2,3 +2,5 @@
 .env
 htmlcov/
 .coverage
+bootstrap.bundle.js
+jquery-3.5.1.js
