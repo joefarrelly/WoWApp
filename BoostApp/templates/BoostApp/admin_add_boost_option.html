@@ -1,0 +1,17 @@
+{% extends "BoostApp/layout.html" %}
+{% block title %}Boost Options{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="new-boost-option">
+    <form id="new-boost-option-form" method="POST">
+        {% csrf_token %}
+        <h2 id="new-boost-option-header">New Boost Option</h2>
+        <div class="row no-gutters" style="margin: 10px 30px">
+            <div style="margin: auto">
+                {% crispy form %}
+                <button type="submit" class="btn btn-success">Create Boost</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

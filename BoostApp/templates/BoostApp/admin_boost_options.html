@@ -1,0 +1,40 @@
+{% extends "BoostApp/layout.html" %}
+{% block title %}Boost Options{% endblock %}
+{#{% load crispy_forms_tags %}#}
+{% block content %}
+<div class="boost-options">
+    <h2 id="boost-options-header">Boost Options</h2>
+    <div class="row no-gutters">
+        <table id="boost-options-table" style="width: 600px; margin:auto; text-align:center">
+            <tr>
+                <th style="width:75px">ID</th>
+                <th style="width:125px">Type</th>
+                <th style="width:200px">Name</th>
+                <th style="width:50px">Level</th>
+                <th style="width:150px">Price</th>
+            </tr>
+            {% for b in boosts %}
+            <tr>
+                <td>{{ b.boostId }}</td>
+                <td>{{ b.boostType }}</td>
+                <td>{{ b.name }}</td>
+                <td>{{ b.level }}</td>
+                <td>{{ b.price }}</td>
+            {% endfor %}
+            </tr>
+        </table>
+    </div>
+    <div class="row no-gutters" style="margin: 30px 0;">
+        <div style="margin: auto">
+            <a class="btn btn-success" href="{% url 'add_boost_option' %}">Add Boost</a>
+        </div>
+        <div style="margin: auto">
+            <form class="delete-boost-form" method="POST">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit" id="delete-boost-button" class="btn btn-success" disabled=""disabled">Delete Boost</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

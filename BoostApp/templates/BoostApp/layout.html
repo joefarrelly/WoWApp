@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>WoWApp - {% block title %}{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'content/bootstrap.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'content/site.css' %}" />
+    <script src="{% static 'scripts/jquery-3.5.1.js' %}"></script>
+    <script src="{% static 'scripts/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'scripts/navbar.js' %}"></script>
+</head>
+
+<body>
+    <div class="site-header">
+        <h1>WoW Boosting Manager</h1>
+    </div>
+    <div class="container-fluid" style="margin: 50px 0">
+        <div class="row">
+            <div class="col-2" style="min-width:180px">
+                <div class="navbar">
+                    <div class="btn-group dropright">
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'account' %}" class="btn btn-secondary">My Account</a>
+                        {% else %}
+                            <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
+                        {% endif %}
+                    </div>
+                    {% if user.is_authenticated %}
+                    <div class="btn-group dropright">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Advertiser</button>
+                            <div class="dropdown-menu">
+                            <!-- Dropdown menu links -->
+                                <a href="{% url 'book_boost' %}" class="dropdown-item">Book Boost</a>
+                                <a href="{% url 'advertiser_boosts' %}" class="dropdown-item">View Boosts</a>
+                            </div>
+                    </div>
+                    <div class="btn-group dropright">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Booster</button>
+                            <div class="dropdown-menu">
+                            <!-- Dropdown menu links -->
+                                <a href="{% url 'signup' %}" class="dropdown-item">Sign-up</a>
+                                <a href="{% url 'booster_boosts' %}" class="dropdown-item">View Boosts</a>
+                            </div>
+                    </div>
+                    {% endif %}
+                    <!--if admin do this stuff-->
+                    <div class="btn-group dropright">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</button>
+                            <div class="dropdown-menu">
+                            <!-- Dropdown menu links -->
+                                <a href="{% url 'boost_options' %}" class="dropdown-item">Boost Options</a>
+                                <a href="{% url 'accounts' %}" class="dropdown-item">Accounts</a>
+                            </div>
+                    </div>
+                    <!--if not admin do this-->
+                    <div class="btn-group dropright">
+                        <a href="{% url 'price_list' %}" class="btn btn-secondary">Price List</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-10">
+                <div class="body-content">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <hr/>
+        <footer>
+            <p>&copy; 2020</p>
+        </footer>
+    </div>
+
+</body>
+</html>

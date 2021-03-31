@@ -1,0 +1,151 @@
+{% extends "BoostApp/layout.html" %}
+{% block title %}Book Boost{% endblock %}
+{% block content %}
+<div class="book-boost">
+        <div class="tab">
+            <button class="tablinks" onclick="boost(event, 'Dungeon')" id="defaultOpen">Dungeon</button>
+            <button class="tablinks" onclick="boost(event, 'Raid')">Raid</button>
+        </div>
+    
+        <div id="Dungeon" class="tabcontent">
+            <form id="book-dungeon-form">
+            <h2 id="book-dungeon-header">Dungeon Boost</h2>
+            <div class="row no-gutters" style="margin: 10px 0">
+                <div class="col-4">
+                    <label for="advertiser" style="float:right">Advertiser: </label>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="dung-advertiser" style="float:left; margin-left: 10px" value="HOBBITYBIBBITY" readonly/>
+                </div>
+            </div>
+            <div class="row no-gutters" style="margin: 10px 0">
+                <div class="col-4">
+                    <label for="buyer" style="float:right">Buyer: </label>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="dung-buyer" style="float:left; margin-left: 10px"/>
+                </div>
+            </div>
+            <div class="row no-gutters" style="margin: 10px 0">
+                <div class="col-4">
+                    <label for="dungeon" style="float:right">Dungeon: </label>
+                </div>
+                <div class="col-8">
+                    <select id="dung-name" style="float:left; margin-left: 10px">
+                        <option value="" selected disabled hidden>-------</option>
+                        <option value="uno">Uno</option>
+                        <option value="dos">Dos</option>
+                        <option value="tres">Tres</option>
+                        <option value="quatre">Quatre</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row no-gutters" style="margin: 10px 0">
+                <div class="col-4">
+                    <label for="level" style="float:right">Level: </label>
+                </div>
+                <div class="col-8">
+                    <select id="dung-level" style="float:left; margin-left: 10px">
+                        <option value="" selected disabled hidden>-------</option>
+                        <option value="one">One</option>
+                        <option value="two">Two</option>
+                        <option value="three">Three</option>
+                        <option value="four">Four</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row no-gutters" style="margin: 10px 0">
+                <div class="col-4">
+                    <label for="price" style="float:right">Price: </label>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="dung-price" style="float:left; margin-left: 10px" value="$$$$$$$" readonly/>
+                </div>
+            </div>
+            <div id="book-dung-button">
+                <input type="submit" value="Book"/>
+            </div>
+            </form>
+        </div>
+
+        <div id="Raid" class="tabcontent">
+            <form id="book-raid-form">
+            <h2 id="book-raid-header">Raid Boost</h2>
+            <div class="row no-gutters" style="margin: 10px 0">
+                <div class="col-4">
+                    <label for="advertiser" style="float:right">Advertiser: </label>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="raid-advertiser" style="float:left; margin-left: 10px" value="HOBBITYBIBBITY" readonly/>
+                </div>
+            </div>
+            <div class="row no-gutters" style="margin: 10px 0">
+                <div class="col-4">
+                    <label for="buyer" style="float:right">Buyer: </label>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="raid-buyer" style="float:left; margin-left: 10px"/>
+                </div>
+            </div>
+            <div class="row no-gutters" style="margin: 10px 0">
+                <div class="col-4">
+                    <label for="raid" style="float:right">Raid: </label>
+                </div>
+                <div class="col-8">
+                    <select id="raid-name" style="float:left; margin-left: 10px">
+                        <option value="" selected disabled hidden>-------</option>
+                        <option value="uno">Uno</option>
+                        <option value="dos">Dos</option>
+                        <option value="tres">Tres</option>
+                        <option value="quatre">Quatre</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row no-gutters" style="margin: 10px 0">
+                <div class="col-4">
+                    <label for="level" style="float:right">Difficulty: </label>
+                </div>
+                <div class="col-8">
+                    <select id="raid-difficulty" style="float:left; margin-left: 10px">
+                        <option value="" selected disabled hidden>-------</option>
+                        <option value="one">One</option>
+                        <option value="two">Two</option>
+                        <option value="three">Three</option>
+                        <option value="four">Four</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row no-gutters style="margin: 10px 0"">
+                <div class="col-4">
+                    <label for="price" style="float:right">Price: </label>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="raid-price" style="float:left; margin-left: 10px" value="$$$$$$$" readonly/>
+                </div>
+            </div>
+            <div class="row no-gutters" style="margin: 10px 0">
+                <div class="col-4">
+                    <label for="datetime" style="float:right">Date & Time: </label>
+                </div>
+                <div class="col-8">
+                    <select id="raid-datetime" style="float:left; margin-left: 10px">
+                        <option value="" selected disabled hidden>-------</option>
+                        <option value="one">fefefefef</option>
+                        <option value="two">hththththth</option>
+                        <option value="three">wdwdwdwdwd</option>
+                        <option value="four">jyjyjyjyjyj</option>
+                    </select>
+                </div>
+            </div>
+            <div id="book-raid-button">
+                <input type="submit" value="Book"/>
+            </div>
+            </form>
+        </div>
+
+</div>
+<script>
+    document.getElementById("defaultOpen").click();
+</script>
+
+{% endblock %}

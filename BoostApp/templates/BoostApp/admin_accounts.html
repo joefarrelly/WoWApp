@@ -1,0 +1,91 @@
+{% extends "BoostApp/layout.html" %}
+{% block title %}Accounts{% endblock %}
+{#{% load crispy_forms_tags %}#}
+{% block content %}
+<div class="accounts">
+        {% csrf_token %}
+    <h2 id="accounts-header">Accounts</h2>
+    <div class="row no-gutters">
+            {#{% crispy form %}#}
+        <table id="accounts-table" style="width: 1150px; margin:auto; text-align:center">
+            <tr>
+                <th style="width:50px">ID</th>
+                <th style="width:200px">Email</th>
+                <th style="width:200px">Username</th>
+                <th style="width:100px">Role</th>
+                <th style="width:100px">Balance</th>
+                <th style="width:100px">Advertiser Rank</th>
+                <th style="width:100px">Commission</th>
+                <th style="width:100px">Class</th>
+                <th style="width:100px">In-game Role</th>
+                <th style="width:100px">Armour Type</th>
+            </tr>
+            {% for a in accounts %}
+            <tr>
+                <td>{{ a.id }}</td>
+                <td>{{ a.email }}</td>
+                <td>{{ a.username }}</td>
+                <td>
+                    {% for r in roles %}
+                        {% if r.user_id == a.id %}
+                            {{ r.userRole }}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                {% if advertisers.exists %}
+                    {% for d in advertisers %}
+                        {% if d.user_id == a.id %}
+                            <td>{{ d.balance }}</td>
+                            <td>{{ d.advRank }}</td>
+                            <td>{{ d.advCommission }}</td>
+                        {% else %}
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                {% endif %}
+                {% if boosters.exists %}
+                    {% for b in boosters %}
+                        {% if b.advertiser_id == a.id %}
+                            <td>{{ b.className }}</td>
+                            <td>{{ b.role }}</td>
+                            <td>{{ b.armourType }}</td>
+                        {% else %}
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                {% endif %}
+            {% endfor %}
+            </tr>
+        </table>
+    </div>
+    <div class="row no-gutters" style="margin: 30px 0;">
+        <div style="margin: auto">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit" id="edit-account-button" name="edit-account-button" class="btn btn-success" disabled="disabled">Edit Account</button>
+            </form>
+            
+        </div>
+        <div style="margin: auto">
+            <form class="delete-account-form" method="POST">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit" id="delete-account-button" name="delete-account-button" class="btn btn-success" disabled="disabled">Delete Account</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

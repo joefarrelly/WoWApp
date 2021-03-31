@@ -1,0 +1,33 @@
+{% extends "BoostApp/layout.html" %}
+{% block title %}My Account{% endblock %}
+{% block content %}
+<div class="account">
+    <h2 id="account-header">Your Account</h2>
+    <div class="row">
+        <div class="col-4">
+            <table style="float:right">
+                <tr>
+                    <th>Email</th>
+                    <td>Anemail</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-4">
+            <table style="margin: auto">
+                <tr>
+                    <th>Character</th>
+                    <td>Anchar</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-4">
+            <table style="float:left">
+                <tr>
+                    <th>Balance</th>
+                    <td>Abalance</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

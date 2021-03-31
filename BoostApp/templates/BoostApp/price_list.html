@@ -1,0 +1,56 @@
+{% extends "BoostApp/layout.html" %}
+{% block title %}Price List{% endblock %}
+{% block content %}
+<div class="price-list">
+    <h2 id="price-list-header">Price List</h2>
+    <div class="row">
+        <div class="col-5" style="text-align: center">
+            <h4 id="dung-price-header">Dungeon</h4>
+            <table id="dung-price" style="margin: 20px auto; width: 400px">
+                <tr>
+                    <th style="width: 200px">Name</th>
+                    <th style="width: 70px">Level</th>
+                    <th style="width: 130px">Price</th>
+                </tr>
+                {% for b in boosts %}
+                    {% if b.boostType == 'Dungeon' %}
+                    <tr>
+                        <td>{{ b.name }}</td>
+                        <td>{{ b.level }}</td>
+                        <td>{{ b.price }}</td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-7" style="text-align: center">
+            <h4 id="raid-price-header">Raid</h4>
+            <table id="raid-price" style="margin: 20px auto; width: 450px">
+                <tr>
+                    <th style="width: 200px">Name</th>
+                    <th style="width: 120px">Difficulty</th>
+                    <th style="width: 130px">Price</th>
+                </tr>
+                {% for b in boosts %}
+                    {% if b.boostType == 'Raid' %}
+                    <tr>
+                        <td>{{ b.name }}</td>
+                        <td>{% if b.level == 1 %}
+                                LFR
+                            {% elif b.level == 2 %}
+                                Normal
+                            {% elif b.level == 3 %}
+                                Heroic
+                            {% elif b.level == 4 %}
+                                Mythic
+                            {% endif %}
+                        </td>
+                        <td>{{ b.price }}</td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

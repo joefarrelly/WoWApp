@@ -1,0 +1,31 @@
+{% extends "BoostApp/layout.html" %}
+{% block title %}Edit Account{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="edit-account">
+        {#{% csrf_token %}#}
+        {#{% crispy form %}#}
+
+    <form id="edit-account-form" method="POST">
+        {% csrf_token %}
+        <h2 id="edit-account-header">Edit Account</h2>
+        <div id="userData" class="row no-gutters" style="margin:auto">
+            <div id="userData" class="edit-row">
+                {% crispy userForm %}
+            </div>
+            <div id="userRoleData" class="edit-row">
+                {% crispy roleForm %}
+            </div>
+            <div id="advertiserData" class="edit-row">
+                {% crispy advertiserForm %}
+            </div>
+            <div id="boosterData" class="edit-row">
+                {% crispy boosterForm %}
+            </div>
+            <div class="edit-row" style="width:100%">
+                <button type="submit" id="edit-account-button" class="btn btn-success">Update Account</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

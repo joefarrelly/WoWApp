@@ -1,0 +1,44 @@
+{% extends "BoostApp/layout.html" %}
+{% block title %}Booster Boosts{% endblock %}
+{% block content %}
+<div class="booster-boosts">
+    <h2 id="booster-boosts-header">Your Upcoming Boosts</h2>
+    <div>
+        <table id="booster-future-boosts" style="margin: 20px auto; width: 770px;">
+            <tr>
+                <th style="width: 150px">Name</th>
+                <th style="width: 120px">Level/Difficulty</th>
+                <th style="width: 100px">Type</th>
+                <th style="width: 300px">Date & Time</th>
+                <th style="width: 100px">Cut</th>
+            </tr>
+            <tr>
+                <td>test1</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>asap</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div id="booster-boost-details-button">
+            <input type="submit" value="Boost Details" style="width:200px"/>
+        </div>
+        </div>
+        <div class="col-6">
+            <div id="booster-cancel-signup-button">
+                <input type="submit" value="Cancel Signup" style="width: 200px"/>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

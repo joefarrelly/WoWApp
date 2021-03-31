@@ -1,0 +1,18 @@
+{% extends "BoostApp/layout.html" %}
+{% block title %}Login{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="user-login">
+    <form id="loginform" method="post">
+         {% csrf_token %}
+    <h2 id="user-login-header">User Login</h2>
+    <div class="row no-gutters" style="margin: 10px 0">
+        <div style="margin: auto">
+            {% crispy form %}
+            <p style="margin: 10px 0">New around here? <a href="{% url 'create_account' %}">Click Here</a></p>
+            <button type="submit" class="btn btn-success">Login</button>
+        </div>
+    </div>    
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,4 @@
+# ignored files
+.env
+htmlcov/
+.coverage
